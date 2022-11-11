@@ -9,7 +9,7 @@ import {
   SubmitBtn,
   ValidationError,
 } from './ContactForm.styled';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 
 const initialValues = {
   name: '',

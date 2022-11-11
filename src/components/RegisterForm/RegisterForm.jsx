@@ -1,4 +1,6 @@
 import { Field, Formik, Form } from 'formik';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/operations';
 
 const initialValues = {
   name: '',
@@ -7,8 +9,10 @@ const initialValues = {
 };
 
 export default function RegisterForm() {
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, actions) => {
-    console.log(values);
+    dispatch(register(values));
   };
 
   return (
