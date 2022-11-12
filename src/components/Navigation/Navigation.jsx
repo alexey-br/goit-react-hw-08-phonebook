@@ -1,10 +1,12 @@
+import { useAuth } from 'hooks/useAuth';
 import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
+  const { isLoggedIn } = useAuth();
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/tasks">Tasks</NavLink>
+      {isLoggedIn ? <NavLink to="/contacts">Contacts</NavLink> : null}
     </nav>
   );
 };

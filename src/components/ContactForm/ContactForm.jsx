@@ -13,14 +13,14 @@ import { addContact } from 'redux/contacts/operations';
 
 const initialValues = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 const ContactForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
-    dispatch(addContact(values));
+  const handleSubmit = ({ name, number }, { resetForm }) => {
+    dispatch(addContact({ name, number }));
     resetForm();
   };
 
@@ -38,8 +38,8 @@ const ContactForm = () => {
         </InputItem>
         <InputItem>
           <InputLabel>Number:</InputLabel>
-          <Input type="tel" name="phone" autoComplete="off" />
-          <ValidationError component="span" name="phone" />
+          <Input type="tel" name="number" autoComplete="off" />
+          <ValidationError component="span" name="number" />
         </InputItem>
         <SubmitBtn type="submit">Add contact</SubmitBtn>
       </Form>

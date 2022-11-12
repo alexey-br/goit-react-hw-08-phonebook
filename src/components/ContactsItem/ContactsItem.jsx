@@ -10,7 +10,7 @@ import {
 } from './ContactsItem.styled';
 
 export default function ContactsItem({ contact }) {
-  const { id, name, phone } = contact;
+  const { id, name, number } = contact;
   const dispatch = useDispatch();
 
   const handleDelete = contactId => {
@@ -21,7 +21,7 @@ export default function ContactsItem({ contact }) {
     <Contact>
       <ContactIcon />
       <ContactName>{name}: </ContactName>
-      <ContactNumber>{phone}</ContactNumber>
+      <ContactNumber>{number}</ContactNumber>
       <DeleteBtn onClick={() => handleDelete(id)}>Delete</DeleteBtn>
     </Contact>
   );
@@ -31,6 +31,6 @@ ContactsItem.propTypes = {
   contact: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
   }).isRequired,
 };

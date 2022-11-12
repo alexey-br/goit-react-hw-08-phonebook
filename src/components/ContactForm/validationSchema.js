@@ -11,7 +11,7 @@ export const schema = yup.object().shape({
     .min(5, 'To short. Minimum 5 letters')
     .max(30, 'To long. Maximum 30 letters')
     .required(),
-  phone: yup
+  number: yup
     .string()
     .trim()
     .min(8, 'To short. Minimum 8 digits')
