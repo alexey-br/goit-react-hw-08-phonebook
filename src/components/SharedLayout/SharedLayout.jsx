@@ -1,5 +1,6 @@
 import AppBar from 'components/AppBar';
 import { useAuth } from 'hooks/useAuth';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
 const SharedLayout = () => {
@@ -13,7 +14,9 @@ const SharedLayout = () => {
       }}
     >
       <AppBar />
-      {!isRefreshing ? <Outlet /> : <div>Refreshing page...</div>}
+      <Suspense fallback={null}>
+        {!isRefreshing ? <Outlet /> : <div>Refreshing page...</div>}
+      </Suspense>
     </div>
   );
 };

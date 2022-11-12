@@ -1,10 +1,10 @@
 import AuthNav from 'components/AuthNav';
 import Navigation from 'components/Navigation';
-import { Box } from 'components/reusableComponents';
 import UserMenu from 'components/UserMenu';
+import { Box } from 'components/reusableComponents';
 import { useAuth } from 'hooks/useAuth';
 
-const AppBar = () => {
+export default function AppBar() {
   const { isLoggedIn } = useAuth();
 
   return (
@@ -20,6 +20,4 @@ const AppBar = () => {
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </Box>
   );
-};
-
-export default AppBar;
+}

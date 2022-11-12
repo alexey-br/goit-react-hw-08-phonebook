@@ -1,7 +1,6 @@
 import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { schema } from './validationSchema';
-
 import {
   InputItem,
   Input,
@@ -16,7 +15,7 @@ const initialValues = {
   number: '',
 };
 
-const ContactForm = () => {
+export default function ContactForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = ({ name, number }, { resetForm }) => {
@@ -45,6 +44,4 @@ const ContactForm = () => {
       </Form>
     </Formik>
   );
-};
-
-export default ContactForm;
+}
