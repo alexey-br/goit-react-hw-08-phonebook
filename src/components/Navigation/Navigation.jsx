@@ -1,13 +1,14 @@
+import { Typography } from '@mui/material';
 import { useAuth } from 'hooks/useAuth';
-import { NavLink } from 'react-router-dom';
+import { Link } from './Navigation.styled';
 
 const Navigation = () => {
   const { isLoggedIn } = useAuth();
   return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-      {isLoggedIn ? <NavLink to="/contacts">Contacts</NavLink> : null}
-    </nav>
+    <Typography variant="h6" component="nav">
+      <Link to="/">Home</Link>
+      {isLoggedIn ? <Link to="/contacts">Contacts</Link> : null}
+    </Typography>
   );
 };
 

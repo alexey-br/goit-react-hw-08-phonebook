@@ -6,12 +6,12 @@ import ContactForm from '../components/ContactForm';
 import Filter from '../components/Filter';
 import ContactList from '../components/ContactList';
 import {
-  Box,
   ErrorMessage,
   HeaderH1,
   HeaderH2,
   Loader,
 } from '../components/reusableComponents';
+import { Box } from '@mui/material';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function Contacts() {
   }, [dispatch]);
 
   return (
-    <Box m={4}>
+    <Box sx={{ m: 4 }}>
       <HeaderH1>Phonebook</HeaderH1>
       <ContactForm />
       <HeaderH2>Contacts:</HeaderH2>

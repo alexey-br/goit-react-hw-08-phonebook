@@ -1,4 +1,5 @@
-import AppBar from 'components/AppBar';
+import { Container } from '@mui/material';
+import Header from 'components/Header';
 import { useAuth } from 'hooks/useAuth';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -6,18 +7,14 @@ import { Outlet } from 'react-router-dom';
 const SharedLayout = () => {
   const { isRefreshing } = useAuth();
   return (
-    <div
-      style={{
-        maxWidth: 960,
-        margin: '0 auto',
-        padding: '0 16px',
-      }}
-    >
-      <AppBar />
-      <Suspense fallback={null}>
-        {!isRefreshing ? <Outlet /> : <div>Refreshing page...</div>}
-      </Suspense>
-    </div>
+    <>
+      <Header />
+      <Container maxWidth="md">
+        <Suspense fallback={null}>
+          {!isRefreshing ? <Outlet /> : <div>Refreshing page...</div>}
+        </Suspense>
+      </Container>
+    </>
   );
 };
 

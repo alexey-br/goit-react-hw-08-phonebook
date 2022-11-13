@@ -7,31 +7,23 @@ export const Contact = styled.li`
   list-style: none;
 
   :not(:last-child) {
-    margin-bottom: ${({ theme }) => theme.space[2]}px;
   }
 `;
 
-export const ContactIcon = styled(IoIosContact)`
-  color: ${({ theme }) => theme.colors.accent};
-`;
+export const ContactIcon = styled(IoIosContact)``;
 
 export const ContactName = styled.span`
   display: inline-block;
   min-width: 150px;
-  margin-left: ${({ theme }) => theme.space[2]}px;
 `;
 
 export const ContactNumber = styled.span`
   display: inline-block;
   min-width: 170px;
-  margin-left: ${({ theme }) => theme.space[2]}px;
 `;
 
 export const DeleteBtn = styled.button`
   font-family: inherit;
-  border-radius: ${({ theme }) => theme.radii.normal};
-  border: ${({ theme }) => theme.borders.normal};
-  border-color: ${({ theme }) => theme.colors.accent};
   cursor: pointer;
   opacity: 0.3;
 
