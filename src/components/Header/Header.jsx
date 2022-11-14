@@ -10,12 +10,12 @@ export default function Header() {
   return (
     <AppBar position="static">
       <Container
+        maxWidth="md"
         sx={{
           minHeight: 64,
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          maxWidth: 'md',
         }}
       >
         <Navigation />

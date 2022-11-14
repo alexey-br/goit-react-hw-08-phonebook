@@ -9,7 +9,7 @@ const SharedLayout = () => {
   return (
     <>
       <Header />
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{ pt: 3, pb: 3 }}>
         <Suspense fallback={null}>
           {!isRefreshing ? <Outlet /> : <div>Refreshing page...</div>}
         </Suspense>

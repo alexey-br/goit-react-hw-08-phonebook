@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { Field, Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
@@ -17,7 +18,9 @@ export default function RegisterForm() {
 
   return (
     <>
-      <h1>Sign up</h1>
+      <Typography variant="h4" component="h1" align="center">
+        Sign up
+      </Typography>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>
           <label>

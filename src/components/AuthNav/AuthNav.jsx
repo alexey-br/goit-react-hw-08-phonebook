@@ -1,10 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { Typography } from '@mui/material';
+import { Link } from 'components/reusableComponents';
 
 export default function AuthNav() {
   return (
-    <div>
-      <NavLink to="/register">Register</NavLink>
-      <NavLink to="/login">Log in</NavLink>
-    </div>
+    <Typography variant="h6" component="div">
+      <Link to="/register">Register</Link>
+      <Link to="/login">Log in</Link>
+    </Typography>
   );
 }
