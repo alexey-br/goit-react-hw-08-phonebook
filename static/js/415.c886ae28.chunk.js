@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_08_phonebook=self.webpackChunkgoit_react_hw_08_phonebook||[]).push([[415],{5415:function(t,n,o){o.r(n),o.d(n,{default:function(){return a}});var e=o(803),r=o(4565),s=o(3329);function a(){return(0,s.jsx)(e.Z,{maxWidth:"sm",children:(0,s.jsx)(r.Z,{variant:"h2",component:"h1",sx:{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%, -50%)"},children:"Best contacts storing APP \ud83d\udc4c"})})}}}]);
+//# sourceMappingURL=415.c886ae28.chunk.js.map
