@@ -7,11 +7,10 @@ import Filter from '../components/Filter';
 import ContactList from '../components/ContactList';
 import {
   ErrorMessage,
-  HeaderH1,
-  HeaderH2,
+  // HeaderH2,
   Loader,
 } from '../components/reusableComponents';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -23,10 +22,14 @@ export default function Contacts() {
   }, [dispatch]);
 
   return (
-    <Box sx={{ m: 4 }}>
-      <HeaderH1>Phonebook</HeaderH1>
+    <Box sx={{ maxWidth: 500, m: '0 auto' }}>
+      <Typography variant="h4" component="h1" align="center">
+        Phonebook
+      </Typography>
       <ContactForm />
-      <HeaderH2>Contacts:</HeaderH2>
+      <Typography variant="h5" component="h2" align="center">
+        Contacts:
+      </Typography>
       <Filter />
       {!error ? <ContactList /> : <ErrorMessage />}
       {isLoading && <Loader />}

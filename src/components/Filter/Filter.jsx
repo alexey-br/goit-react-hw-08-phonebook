@@ -1,7 +1,7 @@
+import { TextField } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeFilter } from 'redux/contacts/filterSlice';
 import { selectFilter } from 'redux/contacts/selectors';
-import { FilterLabel, FilterInput } from './Filter.styled';
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -12,9 +12,14 @@ export default function Filter() {
   };
 
   return (
-    <label>
-      <FilterLabel>Find contacts by name:</FilterLabel>
-      <FilterInput type="text" value={filter} onChange={onInput} />
-    </label>
+    <TextField
+      label="search"
+      variant="standard"
+      fullWidth
+      type="search"
+      value={filter}
+      onChange={onInput}
+      sx={{ mb: 2 }}
+    />
   );
 }

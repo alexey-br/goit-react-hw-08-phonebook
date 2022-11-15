@@ -1,14 +1,8 @@
-import { Formik, Form } from 'formik';
+import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { schema } from './validationSchema';
-import {
-  InputItem,
-  Input,
-  InputLabel,
-  SubmitBtn,
-  ValidationError,
-} from './ContactForm.styled';
 import { addContact } from 'redux/contacts/operations';
+import { Box, TextField, Button, FormHelperText } from '@mui/material';
 
 const initialValues = {
   name: '',
@@ -23,25 +17,61 @@ export default function ContactForm() {
     resetForm();
   };
 
+  const formik = useFormik({
+    initialValues,
+    validationSchema: schema,
+    onSubmit: handleSubmit,
+  });
+
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={schema}
-      onSubmit={handleSubmit}
-    >
-      <Form>
-        <InputItem>
-          <InputLabel>Name:</InputLabel>
-          <Input type="text" name="name" autoComplete="off" />
-          <ValidationError component="span" name="name" />
-        </InputItem>
-        <InputItem>
-          <InputLabel>Number:</InputLabel>
-          <Input type="tel" name="number" autoComplete="off" />
-          <ValidationError component="span" name="number" />
-        </InputItem>
-        <SubmitBtn type="submit">Add contact</SubmitBtn>
-      </Form>
-    </Formik>
+    <form onSubmit={formik.handleSubmit}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+
+          m: '20px 0',
+          gap: 3,
+        }}
+      >
+        <Box sx={{ position: 'reletive' }}>
+          <TextField
+            name="name"
+            id="name"
+            label="Name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            autoComplete="off"
+            size="small"
+            fullWidth={true}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+          />
+          <FormHelperText error={true} sx={{ position: 'absolute' }}>
+            {formik.touched.name && formik.errors.name}
+          </FormHelperText>
+        </Box>
+
+        <Box>
+          <TextField
+            type="tel"
+            name="number"
+            id="number"
+            label="Number"
+            value={formik.values.number}
+            onChange={formik.handleChange}
+            autoComplete="off"
+            size="small"
+            fullWidth={true}
+            error={formik.touched.number && Boolean(formik.errors.number)}
+          />
+          <FormHelperText error={true} sx={{ position: 'absolute' }}>
+            {formik.touched.number && formik.errors.number}
+          </FormHelperText>
+        </Box>
+        <Button type="submit" variant="outlined" size="small">
+          Add contact
+        </Button>
+      </Box>
+    </form>
   );
 }
