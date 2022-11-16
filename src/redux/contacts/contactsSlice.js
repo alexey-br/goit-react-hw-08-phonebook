@@ -14,6 +14,11 @@ function isRejectedAction(action) {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
+  reducers: {
+    setError: (state, action) => {
+      state.error = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
@@ -35,10 +40,11 @@ const contactsSlice = createSlice({
       }))
       .addMatcher(isRejectedAction, state => ({
         ...state,
-        isLoading: true,
-        error: null,
+        isLoading: false,
+        error: 'Something went wrong...🤦‍♂️ Try again later.',
       }));
   },
 });
 
 export const contactsReducer = contactsSlice.reducer;
+export const { setError } = contactsSlice.actions;

@@ -52,7 +52,7 @@ export default function LoginForm() {
             required={true}
           />
           <Button type="submit" variant="contained" size="large">
-            Register
+            Login
           </Button>
         </Box>
       </form>

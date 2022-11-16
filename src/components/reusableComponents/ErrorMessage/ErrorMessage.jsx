@@ -1,10 +1,25 @@
-import { Box } from '@mui/material';
+import { Alert, Snackbar } from '@mui/material';
+import { useDispatch } from 'react-redux';
 
-const ErrorMessage = () => {
+const ErrorMessage = ({ error, setError }) => {
+  const dispatch = useDispatch();
+  let isOpen = true;
+
+  const handleClose = (_, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    isOpen = false;
+    dispatch(setError(''));
+  };
+
   return (
-    <Box sx={{ color: '#8E1600', mt: 4 }}>
-      Sorry, something goes wrong :-( Try again later...
-    </Box>
+    <Snackbar open={isOpen} autoHideDuration={3000} onClose={handleClose}>
+      <Alert severity="error" onClose={handleClose} sx={{ width: '100%' }}>
+        {error}
+      </Alert>
+    </Snackbar>
   );
 };
 
