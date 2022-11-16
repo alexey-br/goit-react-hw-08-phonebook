@@ -4,7 +4,7 @@ import { useAuth } from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { logout } from 'redux/auth/operations';
 
-const UserMenu = () => {
+export default function UserMenu() {
   const { user } = useAuth();
   const dispatch = useDispatch();
 
@@ -21,6 +21,4 @@ const UserMenu = () => {
       </IconButton>
     </Box>
   );
-};
-
-export default UserMenu;
+}

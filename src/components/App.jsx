@@ -11,7 +11,7 @@ const LoginPage = lazy(() => import('pages/Login'));
 const RegisterPage = lazy(() => import('pages/Register'));
 const ContactsPage = lazy(() => import('pages/Contacts'));
 
-const App = () => {
+export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,6 +46,4 @@ const App = () => {
       </Route>
     </Routes>
   );
-};
-
-export default App;
+}

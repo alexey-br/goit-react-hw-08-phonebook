@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import { Alert, Snackbar } from '@mui/material';
 
 export default function Notification({
   open,
   setIsToastOpen,
   text,
-  toastType,
+  toastType = 'info',
 }) {
   const handleClose = (_, reason) => {
     if (reason === 'clickaway') {
@@ -22,3 +23,10 @@ export default function Notification({
     </Snackbar>
   );
 }
+
+Notification.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setIsToastOpen: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  toastType: PropTypes.string,
+};

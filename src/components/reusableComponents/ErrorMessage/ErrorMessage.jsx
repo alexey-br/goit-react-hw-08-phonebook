@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import { Alert, Snackbar } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
-const ErrorMessage = ({ error, setError }) => {
+export default function ErrorMessage({ error, setError }) {
   const dispatch = useDispatch();
   let isOpen = true;
 
@@ -21,6 +22,9 @@ const ErrorMessage = ({ error, setError }) => {
       </Alert>
     </Snackbar>
   );
-};
+}
 
-export default ErrorMessage;
+ErrorMessage.propTypes = {
+  error: PropTypes.string.isRequired,
+  setError: PropTypes.func.isRequired,
+};
