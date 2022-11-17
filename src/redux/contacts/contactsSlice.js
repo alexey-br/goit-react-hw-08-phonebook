@@ -15,8 +15,8 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
   reducers: {
-    setError: (state, action) => {
-      state.error = action.payload;
+    setError: (state, { payload }) => {
+      state.error = payload;
     },
   },
   extraReducers: builder => {
@@ -25,24 +25,22 @@ const contactsSlice = createSlice({
         state.items = payload;
         state.isLoading = false;
       })
-      .addCase(addContact.fulfilled, (state, action) => {
-        state.items = [...state.items, action.payload];
+      .addCase(addContact.fulfilled, (state, { payload }) => {
+        state.items = [...state.items, payload];
         state.isLoading = false;
       })
       .addCase(deleteContact.fulfilled, ({ items }, { payload: { id } }) => ({
         items: items.filter(contact => contact.id !== id),
         isLoading: false,
       }))
-      .addMatcher(isPendingAction, state => ({
-        ...state,
-        isLoading: true,
-        error: null,
-      }))
-      .addMatcher(isRejectedAction, state => ({
-        ...state,
-        isLoading: false,
-        error: 'Something went wrong...🤦‍♂️ Try again later.',
-      }));
+      .addMatcher(isPendingAction, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addMatcher(isRejectedAction, state => {
+        state.isLoading = false;
+        state.error = 'Something went wrong...🤦‍♂️ Try again later.';
+      });
   },
 });
 

@@ -21,8 +21,8 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAuthError: (state, action) => {
-      state.error = action.payload;
+    setAuthError: (state, { payload }) => {
+      state.error = payload;
     },
   },
   extraReducers: builder =>
@@ -41,9 +41,9 @@ const authSlice = createSlice({
       .addCase(login.pending, state => {
         state.error = '';
       })
-      .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+      .addCase(login.fulfilled, (state, { payload: { user, token } }) => {
+        state.user = user;
+        state.token = token;
         state.isLoggedIn = true;
       })
       .addCase(login.rejected, state => {
@@ -57,8 +57,8 @@ const authSlice = createSlice({
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
       })
-      .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
